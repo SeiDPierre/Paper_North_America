@@ -9,7 +9,7 @@
 \usepackage{natbib} % Powerful citation management
 \bibpunct[; ]{(}{)}{,}{a}{}{;} % Custom minimal bibliography styling
 \renewcommand{\baselinestretch}{2}\normalsize
-
+\author{Pierre}
 \title{Paper NA}
 \date{\today}
 
@@ -47,7 +47,7 @@ The resulting residual is attributed to structure in the target region and the t
 When inverting waveforms, and in particular when a more accurate theory than the PAVA is considered, such a simple procedure is not possible, and it is necessary to recompute the synthetic teleseismic waveforms, at each iteration, in a 3D model which is fixed outside of the target region, and updated only within it. 
 This leads to substantial computations, even in the case of an approximate theory such as NACT, and becomes prohibitively expensive, if the 3D teleseismic wavefield is computed using SEM or another accurate numerical method, as one aims to include increasingly shorter periods.
 
-{\color{red}To overcome this issue, we take advantage of the "Box Tomography" theory which allows to combine teleseismic and regional waveforms in a consistent manner to image regional targets at arbitrary locations. This general framework accomodates for arbitrary acquisition setups (i.e. with sources and receivers located outside the regional imaging box), is compatible with most popular numerical methods such as SEM or FD, and can produce exact seismograms and senitivity kernels (i.e. similar to those obtained when solving the problem globally). In this study, we limit ourselves to the situation where both regional and teleseismic events are employed but where all the seismic stations lie within the regional computational domain. Furthermore, we neglect some higher order scattering effects as proposed by Masson and Romanowicz (2016a). In this situation, Box Tomography is particularly efficient as the computational effort  to account for teleseismic data in regional inversions is limited to a few global scale simulations that are done once and for all prior to the inversion. Masson and Romanowicz (2016b) showed that this approach can produce accurate regional tomographic images even though the elastic structure outside the imaged region is neither fully known prior to the inversion nor updated during the inversion.}  
+To overcome this issue, we take advantage of the "Box Tomography" theory which allows to combine teleseismic and regional waveforms in a consistent manner to image regional targets at arbitrary locations. This general framework accomodates for arbitrary acquisition setups (i.e. with sources and receivers located outside the regional imaging box), is compatible with most popular numerical methods such as SEM or FD, and can produce exact seismograms and senitivity kernels (i.e. similar to those obtained when solving the problem globally). In this study, we limit ourselves to the situation where both regional and teleseismic events are employed but where all the seismic stations lie within the regional computational domain. Furthermore, we neglect some higher order scattering effects as proposed by Masson and Romanowicz (2016a). In this situation, Box Tomography is particularly efficient as the computational effort  to account for teleseismic data in regional inversions is limited to a few global scale simulations that are done once and for all prior to the inversion. Masson and Romanowicz (2016b) showed that this approach can produce accurate regional tomographic images even though the elastic structure outside the imaged region is neither fully known prior to the inversion nor updated during the inversion.  
 
 Here, we apply this methodology to the case of teleseismic three component waveform data observed at stations within North America, combined with "regional" waveform data for which both earthquakes and stations are located within the target region.  This is the first time this methodology is applied in practice, and this study represents a proof of concept for this approach. Adding teleseismic data allows better azimuthal coverage of the target region than can be achieved using only the regional dataset and eventually provides for the inclusion of constraints from additional phases such as, for example, teleseismic SS phases reflected inside the target region.
 
@@ -55,14 +55,50 @@ Here, we apply this methodology to the case of teleseismic three component wavef
 
 \subsection{Dataset and model parametrization}.
 
-The dataset includes three component acceleration waveforms from more than 2400 permanent and temporary broadband stations located in the target region, a $90^o \times 90^o $ area encompassing most of north America (Fig. 3). We considered two different datasets:
+\begin{figure}[ht]
+	\centering
+	\begin{tabular}{ccc}
+		\includegraphics[width=1\textwidth]{figures/map_events_stn_global.png}
+	\end{tabular}
+
+	\caption{\baselineskip 18pt 
+	Source and station distribution for the new North American inversion. Black triangles show the seismic stations. Stars are 155 regional events, in addition to 122 teleseismic events. Orange stars indiscate events shallower than $30km$ deep, Yellow stars for deeper than $300km$ and red one are in between. Thick red line indicates the boundaries used for the RegSEM forward simulation, which extends 89◦ by 89◦ horizontally and down to 1600 km and contains all stations and regional events.}
+
+	\label{map_evt_stn}
+\end{figure}
+
+The dataset includes three component acceleration waveforms from 2860 permanent and temporary broadband stations located in the target region, a $89^o \times 89^o $ area encompassing most of north America (Figure ~\ref{map_evt_stn}). We considered two different datasets:
 \begin{itemize}
 	\item a regional dataset consisting of 155 events ($4.5 < M_w < 6.0$) for which sources are located within the target region.
 	\item a teleseismic dataset, consisting of 122 events ($5.5 <M_w <6.9$) for which sources are located outside of the target region.
 \end{itemize}
 
 The waveforms are filtered between 40 and 400 s, with corner frequencies of 53 and 250 s, and windowed into wavepackets, according to the procedure of \cite{li1996global} allowing different weights to be applied according to relative amplitude of individual wavepackets, redundancy of paths and signal to noise ratio. This weighting step is crucial, as it homogeneizes the data coverage within the region and provides a way to construct the data covariance matrix $C_D$, which we approximate as a diagonal matrix. 
-At each iteration of the inversion, only those wavepackets are considered that satisfy predefined goodness of fit criteria compared to synthetics calculated in the current 3D model, which avoids cycle slipping in our time domain waveform inversion procedure. As the model improves, at each iteration, additional wavepackets are included. The total number of wavepackets of fundamental and overtone Love and Rayleigh waves is given in Table 1, and provides a good azimuthal coverage within the NA continent (Fig. 4).
+At each iteration of the inversion, only those wavepackets are considered that satisfy predefined goodness of fit criteria compared to synthetics calculated in the current 3D model, which avoids cycle slipping in our time domain waveform inversion procedure. As the model improves, at each iteration, additional wavepackets are included. The total number of wavepackets of fundamental and overtone Love and Rayleigh waves is given in Table 1, and provides a good azimuthal coverage within the NA continent (Figure ~\ref{density_coverage}).
+
+
+\begin{figure}[p]
+	\begin{minipage}{0.47\linewidth}
+		\centerline{\includegraphics[bb=120 10 470 380,clip=,width=\linewidth]{figures/Coverage_L_iter3.png}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\linewidth}
+		\centerline{\includegraphics[bb=120 10 470 380,clip=,width=\linewidth]{figures/Coverage_T_iter3.png}}
+	\end{minipage}
+
+	\begin{minipage}{0.47\linewidth}
+		\centerline{\includegraphics[bb=120 10 470 380,clip=,width=\linewidth]{figures/Coverage_Z_iter3.png}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\linewidth}
+		\centerline{\includegraphics[bb=120 10 470 380,clip=,width=\linewidth]{figures/Coverage_all_iter3.png}}
+	\end{minipage}
+
+\caption{Density coverage for each component and all gathered.} 
+\label{density_coverage}
+
+\end{figure}
+
 
 In addition to long period waveforms, we also consider a group velocity dispersion dataset \citep{shapiro2002monte} provided in the form of $1^o \times 1^o $ maps between 25 and 100 s. The shorter periods (below 60 s) are used to constrain our homogeneized crustal structure at each iteration, as described below, while the entire period range is included during the inversion for mantle structure, providing additional constraints for structure in the shallow parts of the mantle that are consistent with the treatment of the crust.
 
@@ -73,7 +109,7 @@ This results in a smooth, but realistic crust within most of the continent, and 
 We have shown that this does not bias the mantle structure obtained below 50 km \citep{french2014whole}. 
 At each iteration of the inversion, we only invert for structure below 30 km depth, and subsequently recompute the crustal model for the next iteration by applying our MCMC approach with mantle structure fixed to be that of the current iteration model. The procedure is described and discussed in detail in \cite{french2014whole}
 
-Assuming that our azimuthal coverage is everywhere sufficient within our target region (Fig. 4), we here solve only for radially anisotropic structure and specifically for two of the 5 parameters that describe such a structure, the two parameters to which long period surface waveforms are the most sensitive: isotropic velocity $V_{S}$ and the anisotropic parameter $\xi = {\frac{V_{SH}}{V_{SV}}}^2$, where $V_{SH}$ is the velocity of waves polarized horizontally and $V_{SV}$ that of waves polarized vertically . 
+Assuming that our azimuthal coverage is everywhere sufficient within our target region (Figure ~\ref{density_coverage}), we here solve only for radially anisotropic structure and specifically for two of the 5 parameters that describe such a structure, the two parameters to which long period surface waveforms are the most sensitive: isotropic velocity $V_{S}$ and the anisotropic parameter $\xi = {\frac{V_{SH}}{V_{SV}}}^2$, where $V_{SH}$ is the velocity of waves polarized horizontally and $V_{SV}$ that of waves polarized vertically . 
 The other three parameters and density are constrained through empirical scaling relationships, following \cite{montagner1989petrological}, and are based on laboratory measurements for upper mantle rocks. 
 If (A,C,F,L and N) are the 5 elastic parameters describing a radially anisotropic (or VTI) medium (Love, 1927), then:
 
@@ -101,7 +137,7 @@ We prefer parametrization in terms of $V_S$ and $\xi$, rather than $V_{SH}$ and 
 
 In previous studies \citep{marone2007depth,yuan2010lithospheric}, after inverting for radial anisotropic structure \citep{marone2007three,yuan20113}, we also inverted for azimuthal anisotropy, by adding constraints from SKS splitting measurements. This step will be the topic of a separate publication.  
 
-The target model space is geographically defined as shown in Figure 3, and is limited in depth down to 800 km. As in our previous tomographic studies, the model space is parametrized in terms of 26 cubic splines $\nu(r)_{q}$ vertically \citep{megnin2000three} from the core-mantle boundary to the Moho, although we invert for structure only in the top 16 splines, corresponding to the top 700-800 km of the mantle. The spline nodes are spaced more closely at shallow depths, and located at the following radii: 5690, 5810, 5910, 5900, 6061, 6101, 6131, 6161, 6191, 6221, 6241, 6261, 6281, 6301, 6321, 6341 km.  
+The target model space is geographically defined as shown in Figure ~\ref{map_evt_stn}, and is limited in depth down to 800 km. As in our previous tomographic studies, the model space is parametrized in terms of 26 cubic splines $\nu(r)_{q}$ vertically \citep{megnin2000three} from the core-mantle boundary to the Moho, although we invert for structure only in the top 16 splines, corresponding to the top 700-800 km of the mantle. The spline nodes are spaced more closely at shallow depths, and located at the following radii: 5690, 5810, 5910, 5900, 6061, 6101, 6131, 6161, 6191, 6221, 6241, 6261, 6281, 6301, 6321, 6341 km.  
 Laterally, we parametrize our model in terms of spherical splines $\beta(\theta,\phi)_{p}$ \citep{wang1995spherical}. 
 The combination of vertical and spherical splines constitutes a local basis for the description of smooth functions within the model volume. 
 Thus, the value of a model parameter $m(r,\theta,\phi)$ can be computed at any point in space given the set of spline coefficients $m_{pq}$:
@@ -115,17 +151,20 @@ In our case, outside of the target region, we adopt a "level 6" spherical grid f
 
  \subsection{Forward modelling}
 
-\begin{figure}
-\centering
-\begin{tabular}{ccc}
-(a)&&(b)\\
-  \includegraphics[width=.45\textwidth]{snap_glob.pdf}  &&
-  \includegraphics[width=.45\textwidth]{snap_reg.pdf} \\ 
-  \includegraphics[width=.45\textwidth]{seismo.pdf}      &&
-  \includegraphics[width=.45\textwidth]{seismo.pdf}
-\end{tabular}
-\caption{\label{injection}Comparison between a global scale simulation and a regional scale simulation of wave propagation following an earthquake in south America. The seismograms corresponds to the recordings at 37 station located in north America (red spheres). The pink sphere shows the epicenter of the earthquake. In (a), the wavefield is modeled globally using the spectral element method Specfem3D\_globe \citep{komatitsch2002spectrala}. In (b), the wavefield is modeled regionally using the RegSEM  
-During the inversion, all the synthetic seismograms are computed using the regional SEM code RegSEM \citep{cupillard2012regsem} code and regenerated thanks to virtual sources located around the computational domain \citep[see][]{masson2013numerical}. The sismograms in (b) are exactly similar to those in (a), however, the computational effort is greatly reduced in the regional simulation (b).}
+\begin{figure}[p]
+% \centering
+	\begin{tabular}{ccc}
+		(a)&&(b)\\
+		\includegraphics[width=.4\textwidth]{figures/snap_glob.pdf} && \includegraphics[width=.4\textwidth]{figures/snap_reg.pdf} \\ 
+		\includegraphics[width=.4\textwidth]{figures/seismo.pdf}    && \includegraphics[width=.4\textwidth]{figures/seismo.pdf}
+	\end{tabular}
+
+	\caption{\baselineskip 18pt 
+		Comparison between a global scale simulation and a regional scale simulation of wave propagation following an earthquake in south America. The seismograms corresponds to the recordings at 37 station located in north America (red spheres).
+		The pink sphere shows the epicenter of the earthquake. In (a), the wavefield is modeled globally using the spectral element method Specfem3D\_globe \citep{komatitsch2002spectrala}. In (b), the wavefield is modeled regionally using the RegSEM. During the inversion, all the synthetic seismograms are computed using the regional SEM code RegSEM \citep{cupillard2012regsem} code and regenerated thanks to virtual sources located around the computational domain \citep[see][]{masson2013numerical}. The sismograms in (b) are exactly similar to those in (a), however, the computational effort is greatly reduced in the regional simulation (b).}
+
+	\label{injection}
+
 \end{figure}
 
 During the inversion, all the synthetic seismograms are computed using the regional SEM code RegSEM \citep{cupillard2012regsem} that takes into account effects of oceans, topography/bathymetry, ellipticity, and anelasticity, and where the computational domain is truncated using absorbing boundaries. 
@@ -141,7 +180,7 @@ During the inversion, the global recordings are transformed to virtual sources t
 
 Overall, the additional computational effort to account for teleseismic event consists of one global simulation per teleseismic event that are done once and for all before the inversion starts.
 
- \subsection{Inverse modelling}
+\subsection{Inverse modelling}
 
 In continuity of our previous work \citep[e.g][]{marone2007three,yuan20113,yuan2014multiscale}, we use a hybrid iterative inversion scheme where, at each iteration, the forward wavefield is computed accurately using SEM, but the inverse step is solved using the formalism of \cite{tarantola1982generalized}  with sensitivity kernels calculated approximately using normal mode perturbation theory. This allows us to apply a fast converging Gauss-Newton quadratic optimization scheme. 
 As shown in \cite{tarantola2005inverse}, and in Appendix A of \cite{lekic2011inferring}, it is far more important to use an accurate forward modelling scheme to compute the misfit function, while inaccuracies in the theoretical treatment of kernels result in smoothing errors that can be compensated for in subsequent iterations. Currently popular "adjoint tomographic" approaches \citep{zhu2015seismic,bozdag2016global} do compute the numerically exact gradient, however, they also need to apply smoothing operators and regularization, which degrades the accuracy of their kernels. Importantly, they rely on a linear optimization scheme (conjugate gradient method), which is characterized by very slow convergence.
@@ -166,79 +205,56 @@ NACT includes across branch-coupling, in addition to PAVA, which brings out 2D s
 Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing effects, e.g. \cite{zhou2005finite}). These effects become important for accurate amplitude fitting. With our choice of misfit function, we are first and foremost fitting the phase, and for that, the 2D effects in the vertical plane are dominant, and important especially for overtones, as illustrated in \cite{romanowicz2008computation}.
 
 
-% \subsection{Tectonic back ground}
-
-% Cratons are large areas of continental lithosphere that have remained coherent and relatively rigid since Precambrian \citep{hoffman1988united}. Through more than $3Ga$, cratons have survived compared to the $<200Ma$ life span of ocean basins.
-% In accordance with the absence of geoid anomalies over continents, Jordan proposed the concept of Continental Tectosphere \citep{jordan1975continental} where continental mantle is made of low-density, melt-depleted peridotite residua, whose low densities exactly offset the effect of thermal contraction associated with a growing thermal boundary layer \citep{lee2011building}.
-% The fact that the continental lithosphere manages to avoid the fate of recycling suffered by oceanic lithosphere has been attributed to high viscosity \citep{sleep2003survival, doin1997mantle}, neutral to positive buoyancy, low heat flow compared to surronding area \citep{jaupart2014building}, dehydrated \citep[i.e dryer than oceanic mantle until 250km deep according to electrical conductivity tomography,][]{yang2015three, hirth2000comparison}, and chemically depleted until ca. 175km deep \citep{kopylova1999petrology} while still fertile below until ca. 300km \citep{s2005archean}. 
-
-% Since \cite{grand1984upper}, one well established feature within NA lithosphere is the contrast between the high velocity craton and the low velocity western active part. This feature is observed in many global models (e.g., \citep{megnin2000three, shapiro2002monte, panning2006three, houser2008shear, nettles2008radially, kustowski2008anisotropic, ritsema2010s40rts, simmons2010gypsum, lekic2011inferring, debayle2012global, schaeffer2013global, french2014whole,bozdag2016global} where the cratonic lithosphere is caracterized by higher than average (ca. $4.8 km.s^{-1}$) velocities down to at least $200km$ deep. 
-
-% % Such values, at upper mantle depths with Standart Temperature Condition, are very important when interpreting shear wave velocities. For example, a relatively small velocity increase of $1 \%$ in the uppermost mantle can be attributed to a $5$ unit increase in the Mg\# relative to Fe, or an $220°C$ decrease in temperature. \citep{lee2003compositional, bedle2009svelocity}
-
-% % The combination of low temperature and depleted lithosphere induces observed high velocity anomalies.
-
-% Continental scale studies showed that, fastest anomalies are beneath archean and proterozoic terranes around 150km deep \citep{bedle2009svelocity,lee2005surface,schaeffer2014imaging,marone2007three,yuan20113}, there are correlations between surface tectonics provinces and shear waves velocities heterogeneities \citep{nettles2008radially,yuan2014lithospheric,darbyshire2013seismic}, upper mantle cratonic keels extends down to ca. 250km with lateral thin out downward. \cite{yuan2010lithospheric} infered from azimuthal anisotropy study, that cratonic keels are vertically stratified and comprise a cold core of highly depleted material bounded deeper by a fertile (less depleted) thermal layer. While the sharp Mid-Lithospheric Discontinuity (MLD) between the chemical layer and thermal layer is observed (e.g \cite{thybo1997seismic,abt2010north,calo2016layered}), the Lithosphere-Asthenosphere Boundary (LAB) is more diffuse and is identified as flat in topography through a negative gradient in shear wave velocities associated with an alignement of anisotropic fast axes direction with Absolute Plate Motion. \citep{yuan2010lithospheric,eaton2009elusive}\\
-
-% At local scale, it has been observed that the stagnant shield suffered deformations from the convective mantle \citep{kaban2015cratonic,eaton2007seismic,frederiksen2013modification,boyce2016subduction}
-
-% !!! Still a lot of local studies to include,  Greenland, deep slab imaged, Wyoming, talk more about Divot, Hotspots, Appalachian, Gulf of Mexico, JdF. !!!
-% % This structure expands over both Archean and Proterozoic terranes in the canadian shield, which is not necessarly the case for all archean terranes within the plate (e.g the Wyoming block in the US \citep{yuan2014lithospheric}).
-
-% Such high shear wave velocity values, at upper mantle depths with Standart Temperature Condition, are very important when interpreting shear wave velocities. For example, a relatively small velocity increase of $1 \%$ in the uppermost mantle can be attributed to a $5$ unit increase in the Mg\# relative to Fe, or an $220°C$ decrease in temperature. \citep{lee2003compositional, bedle2009svelocity}
-
-% Mechanism for craton formation is debated (e.g., \cite{lee2011building} \cite{s2005archean}), and caracterizing cratons through high resolution imaging gives clues to elucidate this puzzle.
-% We propose interpretations on the geologic and tectonic evolution of the continent since both parameter variabilities are related to compositional, mineralogical and thermal states of the mantle.
-
-
-
-
-% The North American (NA) continent is fully part of the North American plate. This tectonic plate is moving at ca. $2cm$ per year in a west-south westerly direction around a rotation pole located in north western Ecuador \citep{bleeker2005north} Along its western margin, we can find:
-%  \begin{itemize}
-%  	\item Subduction of the Pacific plate under NA plate south to Alaska, the Cascadian subduction zone of the Juan de Fuca plate and the Coco plate subducting under central America, both generating arc volcanism and being part of the ancient Farallon plate which was subducting under NA plate since Jurassic period.
-%  	\item Strike-slip along the Queen Charlotte-Fairweather system in Canada and along the San Andreas fault in California.
-%  \end{itemize}
- 
-
-%  The evolution of western North America has been controlled by this Mesozoic-Cenozoic ocean-continent collisional system. 
-%  Subduction events of oceanic lithosphere are thought to be responsible for the Laramide orogeny (Late Cretaceous), characterized by minor horizontal shortening in the crust, but considerable crustal thickening generating the rocky mountains (Bird 1988).
-%  The Rocky-Mountain Front (RMF) almost perfectly coincides with the boundary between this tectonically active area and the more stable cratonic part.
-
-%  Two third of the Laurentia craton consist of distinct archean provinces: 
-% \begin{itemize}
-% 	\item undeformed Slave, Superior and Wyoming cratons
-% 	\item highly reworked Rae and Hearne cratons (Churchill structural Province)
-% 	\item Nain and North Atlantic Craton (NAC) underlying southern Greenland
-% 	\item Sask which underlies the Trans-Hudson orogen Proterozoic belts (THO)
-% \end{itemize}
-%   All of these archean blocks, comprising most of the Canadian shield, were mainly welded by Proterozoic belts like the THO, but it is still under debates whether archean blocks originated from related ancestral landmasses (i.e a unique super craton, a couple of super cratons, or many super cratons). Greenland, despite its continental part was separated from NA continent ca. $80Ma$ ago, is fully part of the NA plates. While the NAC on its southern part has being studied over the last decades, central (Apparently a continuity of the THO \cite{bleeker2005north} and northern (apparently Rae-like archaean blocks) part are still poorly documented.
-
-%  In the periphery of this NA archean core, proterozoic belts like Wopmay, Penokean and Makkovik-Ketilian orogens from 2.0 to 1.8 Ga and Labradorian, Central Plains and Yavapai-Mazatzal orogens from 1.8 to 1.6 Ga represent zones of accretion for Proterozoic material and mark the amalgamation of the archean cores. \citep{hoffman1988united} 
-%  The Grenvile orogen (ca. $1.1 Ga$) at the southeast of the craton core completed to shape the Laurentia craton as we can observe it today, surviving both Rodinia ($825-550Ma$) and Pangaea ($335-175Ma$) break-ups. 
-
-
 \section{Results}
 
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/Vs-60-300-for-paper.png}
+
+	\caption{\baselineskip 18pt
+	3D isotropic shear wave velocity structure of the continent. Map views are shown from 60 km down to 300 km, shown as variations with respect to the global mean (thick black line in Figure ~\ref{1daverage}). 
+	% Labels are: BP, Blake Plateau; NQ, New Quebec Orogen; THO, Trans-Hudson Orogen. State abbreviations are: CO, Colorado; MT, Montana; ND, North Dakota; SD, South Dakota; and WY, Wyoming. 
+	% The geological limits of the cratonic crust are indicated as follows: (to be defined when using final figures... 
+	}
+
+	\label{3d-VS}
+
+\end{figure}
+
+
+The tomographic inversion results for $V_S$ and $\xi$ are presented in figures (to be defined). We divide the model description and interpretation into two parts, focusing first on the continent-wide structure and then, in more detail, on eastern different regions.
+
 \subsection{Continental model}
-To link with the 1D profile!
-As observed in many other studies, average profiles of $V_S$ within North America (NA) in the shallow upper mantle is higher compared to Global average profiles biased by ocean structures. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/1D_profile_withmean.png}
+
+	\caption{1D profiles of the global mean and the continental mean}
+	\label{1daverage}
+\end{figure}
+
+As observed in many other studies, average profiles of $V_S$ within North America (NA) in the shallow upper mantle is higher compared to Global average profiles biased by ocean structures as shown in Figure ~\ref{1daverage}. 
 The difference is clearly distinct until ca. $270km$ and then fade away deeper, though, NA remains slightly higher than the global average. 
 The global negative gradient of $V_S$ near $150km$ is here less pronounced beneath the continent by the influence of the positive gradient beneath the cratonic part. 
 NA average of $\xi$ is lower than the global average, the latter influenced by the strong $\xi > 1$ oceanic signature where shearing is more important. 
 Both trends are similar, while maxima and minima are always slightly deeper than globally and the change from $V_{SH} > V_{SV}$ to $V_{SH} < V_{SV}$ is reached at ca. $420km$.
 
 \subsection{Beneath the craton}
-\begin{figure}[h]
-\centering
-\label{cratoncross}
-% \begin{tabular}{ccc}
-\includegraphics[width=.45\textwidth]{/Users/Pierre/Documents/MATLAB/figures/iter2/profiles_NASEM_vs_dxi_A.pdf}  &&
-% \end{tabular}
-\caption{\bm{Cross Section of the lithospheric core}}
+
+\begin{figure}
+	\begin{minipage}{0.5\linewidth}
+		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_A.pdf}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.5\linewidth}
+		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_B.pdf}}
+	\end{minipage}
+
+	\caption{Cross Section of the lithospheric core}
+	\label{cratoncross}
+
 \end{figure}
 
-
-To link with slices and a set of profiles
 % Gung 2003 Positive anomalies of dlnxi down to 400km in the craton.
 
 Our study confirms the presence of a thick cratonic root with faster than average $V_S$ down to $250km$ deep, with highest velocities, ca. $4.8km.s^{-1}$, located at depths shalower than at most $150km$. 
@@ -248,59 +264,133 @@ The northern part is delimited by the coastine of the Arctic ocean including the
 These lateral edges are well observed until $150km$, below, the cratonic root retracts toward the center of the archaean continent beneath Slave, Hearne/Rae and western Superior cratons. 
 Everywhere within the lithosphere, a negative gradient of $V_S$ is observed with a minimum of ca. $4.6km.s^{-1}$ reached at $300km$. 
 Deeper, this gradient switches to a positive trend. While the beginning of the negative gradient shows a topography, the bottom of the gradient located beneath Slave, Hearne/Rae and western Superior cratons; appears very flat.
-As observed in Gung et al., 2003; down to 250km negative anomalies of $dln(\xi)$ are observed in the whole craton. 
+As observed in \cite{gung2003global}; down to 250km negative anomalies of $dln(\xi)$ are observed in the whole craton in contrast with the oceanic surrounding. 
 Deeper, positive anomalies are emerging beneath archaean Slave/Rae blocks and proterozoic Yavapai/Mazatzal/Great Rhyolites provinces, however $dln\xi$ anomalies remain positives beaneath the archaean Superior block. 
 In the whole lithosphere, $\xi$ is higher than $1$ which means that $V_{SH} > V_{SV}$. 
 
 
-\subsubsection{Wyoming}
-The Archaean aged Wyoming craton does not show as high anomalies as within the craton nucleus. 
+\subsubsection{Wyoming}{h}
+\begin{figure}
+	\begin{minipage}{0.5\linewidth}
+		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_wyoming_A.pdf}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.5\linewidth}
+		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_wyoming_B.pdf}}
+	\end{minipage}
+
+	\caption{Cross Section of the Wyoming lithosphere}
+	\label{wyomingcross}
+
+\end{figure}
+
+The Archaean aged Wyoming craton does not show as high anomalies as within the craton nucleus as shown in figure ~\ref{wyomingcross}. 
 It is split into 2 distinctive part. A western part showing low velocities influenced by the active tectonic with a radially positive gradient. 
 In contrast with the eastern part showing higher velocities with a radially negative then positive gradient. 
 The depth of negative gradient's minima is variable, from 70 (western part) to 250km (eastern part) deep. 
 The separation between the two areas coincides with the RMF.
 
 \subsubsection{Slave}
-The Archaean aged Slave craton shows typical lithospheric craton signatures with higher than average velocities. 
-It shows in the entire region a positive velocity gradient with a maximum of ca. $4.8km.s^{-1}$ associated with a maximum of $\xi$ at ca. $150km$ deep.
-Deeper, a negative gradient is observed with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep. 
-The topography of the extrema appears flat. (Est ce que c'est une characteristique d'un craton stable non deforme?)
-Although the Slave lithosphere shows highest velocities at $150km$, above $100km$ velocities are slightly higher than the continental average ($dln(V_S)< 4\%$).
+
+	\begin{figure}
+		\begin{minipage}{0.5\linewidth}
+			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_slave_A.pdf}}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.5\linewidth}
+			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_slave_B.pdf}}
+		\end{minipage}
+
+		\caption{Cross Section of the Slave lithosphere}
+		\label{slavecross}
+
+	\end{figure}
+
+	The Archaean aged Slave craton shows typical lithospheric craton signatures with higher than average velocities as shown in figure ~\ref{slavecross}. 
+	It shows in the entire region a positive velocity gradient with a maximum of ca. $4.8km.s^{-1}$ associated with a maximum of $\xi$ at ca. $150km$ deep.
+	Deeper, a negative gradient is observed with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep. 
+	The topography of the extrema appears flat. (Est ce que c'est une characteristique d'un craton stable non deforme?)
+	Although the Slave lithosphere shows highest velocities at $150km$, above $100km$ velocities are slightly higher than the continental average ($dln(V_S)< 4\%$).
 
 \subsubsection{Superior Craton}
-In our model, the Superior craton can be split in two parts: The western part showing typical cratonic structures while the eastern part shows slower velocities at all depths. Below $150km$, velocity anomalies are below $2\%$ (almost $0\%$). 
+	In our model, the Superior craton can be split in two parts: The western part showing typical cratonic structures while the eastern part shows slower velocities at all depths. Below $150km$, velocity anomalies are below $2\%$ (almost $0\%$). 
 
-\paragraph{Western part}
-The Archaean aged Superior craton shows typical lithospheric craton signatures with higher than average velocities. 
-It shows in the entire region a positive velocity gradient with a maximum of ca. $4.8km.s^{-1}$  associated with a maximum of $\xi$ at ca. $150km$ deep.
-Deeper a negative gradient is observed with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep. 
-Opposed to the Slave craton, the topography of the extrema is variable. 
-From SW to NE, the core of maximum velocity can reach beween 70 and 150km of thickness. 
-Beneath the maximum velocity region of ca. $150km$ the negative gradient appears stipper than beneath the $70km$ one, while the topography of the deeper positive gradient appears flat. 
-At the south-eastern part of the western Superior, close the Mid-Lithospheric rift, we can observe the thinning of the cratonic lithosphere when crossing the Grenville front. 
-The band of minimum velocity within the cratonic root has similar amplitudes, in terms of velocity, than beneath the younger lithosphere but at shalower depths between $100$ and $150km$. 
-Folowing the Great Meteor track built by \cite{heaman2000timing}, which crosses the Superior craton, it is interseting to note that the low velocity channel beneath the base of the lithosphere shows lower velocties than usualy observed beneath the other Archaean cratons. 
-This slow anomaly corresponds to the V-shape dent, or divot, observed by \cite{lee1997upper} who explained the feature by the presence of water in the mantle. 
-We observe at $250km$ that the slow anomaly go further inland and crosses the Superior Craton northward until the Hudson bay following the GMT.
+	\paragraph{Western part}
+		\begin{figure}
+			\begin{minipage}{0.5\linewidth}
+				\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_west_superior_A.pdf}}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.5\linewidth}
+				\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_west_superior_B.pdf}}
+			\end{minipage}
 
-\paragraph{Eastern part}
-Compared to its western part, the structure here shows differences. 
-Fast velocities are present down to $150km$deep but are slower. 
-The negative gradient is steeper and the minimum is radially thicker. 
-However at the center, the minimum channel is not continuous and shows higher (still slower than the center of the western Superior) velocities.
-% the gradual trend in velocity is replaced by an almost constant slow anomaly from $150$ to $300km$ deep.   
+			\caption{Cross Section of the western Superior lithosphere}
+			\label{westsupcross}
+
+		\end{figure}
+
+		The Archaean aged Superior craton shows typical lithospheric craton signatures with higher than average velocities as shown in figure ~\ref{westsupcross}. 
+		It shows in the entire region a positive velocity gradient with a maximum of ca. $4.8km.s^{-1}$  associated with a maximum of $\xi$ at ca. $150km$ deep.
+
+		Deeper a negative gradient is observed with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep. 
+		Opposed to the Slave craton, the topography of the extrema is variable. 
+		From SW to NE, the core of maximum velocity can reach beween 70 and 150km of thickness. 
+		Beneath the maximum velocity region of ca. $150km$ the negative gradient appears stipper than beneath the $70km$ one, while the topography of the deeper positive gradient appears flat. 
+		At the south-eastern part of the western Superior, close the Mid-Lithospheric rift, we can observe the thinning of the cratonic lithosphere when crossing the Grenville front. 
+		The band of minimum velocity within the cratonic root has similar amplitudes, in terms of velocity, than beneath the younger lithosphere but at shalower depths between $100$ and $150km$. 
+		Folowing the Great Meteor track built by \cite{heaman2000timing}, which crosses the Superior craton, it is interseting to note that the low velocity channel beneath the base of the lithosphere shows lower velocties than usualy observed beneath the other Archaean cratons. 
+		This slow anomaly corresponds to the V-shape dent, or divot, observed by \cite{lee1997upper} who explained the feature by the presence of water in the mantle. 
+		We observe at $250km$ that the slow anomaly go further inland and crosses the Superior Craton northward until the Hudson bay following the GMT.
+
+		\paragraph{Eastern part}
+		\begin{figure}
+			\begin{minipage}{0.5\linewidth}
+				\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_east_superior_A.pdf}}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.5\linewidth}
+				\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_east_superior_B.pdf}}
+			\end{minipage}
+
+			\caption{Cross Section of the western Superior lithosphere}
+			\label{eastsupcross}
+
+		\end{figure}
+
+		Compared to its western part, the structure here shows differences as shown in figure ~\ref{eastsupcross}. . 
+		Fast velocities are present down to $150km$deep but are slower. 
+		The negative gradient is steeper and the minimum is radially thicker. 
+		However at the center, the minimum channel is not continuous and shows higher (still slower than the center of the western Superior) velocities.
+		% the gradual trend in velocity is replaced by an almost constant slow anomaly from $150$ to $300km$ deep.   
 
 \subsubsection{Trans Hudson Orogen}
-The Trans Hudson Orogen (THO) is a belt of Paleo-Proterozoic aged region. It refers to a major tectonic event (between $2.0$ to $1.8Ga$) that welded Archaean blocks to form the Laurentia Craton.
-% At shallow depths ($ < 60km$) shows lower velocities than archaean surroundings. 
-It is interesting to notice that at shallower depths than $100km$, the proterozoic THO (including the Sask craton) which welded the Superior and Rae/Hearne cratons, shows lighter (i.e, $+4\%$ compared to $+8\%$) positive anomalies than its archaean surrounding. While most of the proterozoic root start to thin out at $150km$, the THO at the vicinity of the hudson bay shows as high anomalies as Rae/Hearne and Superior areas. 
+	The Trans Hudson Orogen (THO) is a belt of Paleo-Proterozoic aged region. It refers to a major tectonic event (between $2.0$ to $1.8Ga$) that welded Archaean blocks to form the Laurentia Craton.
+	% At shallow depths ($ < 60km$) shows lower velocities than archaean surroundings. 
+	It is interesting to notice that at shallower depths than $100km$, the proterozoic THO (including the Sask craton) which welded the Superior and Rae/Hearne cratons, shows lighter (i.e, $+4\%$ compared to $+8\%$) positive anomalies than its archaean surrounding. While most of the proterozoic root start to thin out at $150km$, the THO at the vicinity of the hudson bay shows as high anomalies as Rae/Hearne and Superior areas. 
 
 \subsubsection{Yavapai Mazatsal region}
-Yavapai-Mazatzal orogens from 1.8 to 1.6 Ga represent zones of accretion for Proterozoic material and mark the amalgamation of the archean cores. \citep{hoffman1988united} \\
-West to the RMF, the region shows low velocities influenced by the active tectonic with a radially positive gradient. 
-The north eastern part shows velocity anomalies slightly lower than the Archaean nucleus. Velocity maxima of $4.8km.s^{-1}$ are located shalower than $100km$. 
-Below, the radially negative gradient is observed and shows the same characteristic than the eastern Superior craton. It is interesting to note that, beneath Nebraska and Kansas, a high velocity anomaly of about $4.7km.s^{-1}$ is present until ca. $170km$ (while it is $120km$ in most of the region) where cretaceous aged kimberlites are sampled. 
-These kimberlites indicate a lithosphere thickness of about $160km$ and have been affected by asthenospheric upwelling related to the Mid-Continent Rift System. \citep{griffin2004lithosphere}
+	\begin{figure}
+		\begin{minipage}{0.5\linewidth}
+			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_yava-maza_A.pdf}}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.5\linewidth}
+			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_yava-maza_B.pdf}}
+		\end{minipage}
+
+		\caption{Cross Section of the Yavapai and Mazatzal lithosphere}
+		\label{yavacross}
+
+	\end{figure}
+
+
+	Yavapai-Mazatzal orogens from 1.8 to 1.6 Ga represent zones of accretion for Proterozoic material and mark the amalgamation of the archean cores. \citep{hoffman1988united} \\
+	Cross section of the region are represented in figure ~\ref{yavacross}.
+	West to the RMF, the region shows low velocities influenced by the active tectonic with a radially positive gradient. 
+	The north eastern part shows velocity anomalies slightly lower than the Archaean nucleus. Velocity maxima of $4.8km.s^{-1}$ are located shalower than $100km$. 
+	Below, the radially negative gradient is observed and shows the same characteristic than the eastern Superior craton. It is interesting to note that, beneath Nebraska and Kansas, a high velocity anomaly of about $4.7km.s^{-1}$ is present until ca. $170km$ (while it is $120km$ in most of the region) where cretaceous aged kimberlites are sampled. 
+	These kimberlites indicate a lithosphere thickness of about $160km$ and have been affected by asthenospheric upwelling related to the Mid-Continent Rift System. \citep{griffin2004lithosphere}
 
 
 
@@ -308,18 +398,18 @@ These kimberlites indicate a lithosphere thickness of about $160km$ and have bee
 
 
 \subsection{Surrounding oceanic}
-Our inversion is focusing on the continental part, as shown in our spatial parameterization (i.e. see figure...) where the region is sampled by data.
-Ecxept the oceanic borders of NA, further away, the structure has not been updated from SEMucb\_wm1 \citep{french2014whole}. 
+	Our inversion is focusing on the continental part, as shown in our spatial parameterization (i.e. see figure...) where the region is sampled by data.
+	Ecxept the oceanic borders of NA, further away, the structure has not been updated from SEMucb\_wm1 \citep{french2014whole}. 
 
-\subsubsection{Eastern Passive margin}
-As in \cite{schaeffer2014imaging,yuan2014lithospheric,james2014rayleigh,silveira2002anisotropic,mocquet1990three}, we observe along the negative anomaly structure following the Appalachian continental shelf, a stretched positive anomaly structure from the Suwanne terrane in Florida to the Avalonian terranes of New-Scotland. 
-At $60km$ it is made of several blocks of at most $+3\%$ anomalies emdedded in a $+2\%$ structure. At $150km$, the structure is split into 2 blocks by a slow anomaly comprising both the Great Meteor (GMT) and Bermuda tracks, and further southeast, the Low Velocities Fingers (LVF) observed in \cite{french2013waveform}. 
+	\subsubsection{Eastern Passive margin}
+		As in \cite{schaeffer2014imaging,yuan2014lithospheric,james2014rayleigh,silveira2002anisotropic,mocquet1990three}, we observe along the negative anomaly structure following the Appalachian continental shelf, a stretched positive anomaly structure from the Suwanne terrane in Florida to the Avalonian terranes of New-Scotland. 
+		At $60km$ it is made of several blocks of at most $+3\%$ anomalies emdedded in a $+2\%$ structure. At $150km$, the structure is split into 2 blocks by a slow anomaly comprising both the Great Meteor (GMT) and Bermuda tracks, and further southeast, the Low Velocities Fingers (LVF) observed in \cite{french2013waveform}. 
 
-Such structure would correspond to late proterozoic gondwanian continental terranes that formed during the Pan African orogenesis \citep{kennedy1964structural} and remained attached to the North American margin during the opening of the Atlantic ocean. \citep[e.g.][]{thomas2006tectonic}
-On the continental shelf, authors \citep[e.g.][]{o1983avalon,nance2002cordilleran} identified the west Avalonian terranes of pan-african affinity as in Florida \citep[see][]{smith1982review} that might have been underlayed by a thin (ca. $100km$) lithosphere before the Pangaea assembling. \citep{mckenzie2015lithospheric}
+		Such structure would correspond to late proterozoic gondwanian continental terranes that formed during the Pan African orogenesis \citep{kennedy1964structural} and remained attached to the North American margin during the opening of the Atlantic ocean. \citep[e.g.][]{thomas2006tectonic}
+		On the continental shelf, authors \citep[e.g.][]{o1983avalon,nance2002cordilleran} identified the west Avalonian terranes of pan-african affinity as in Florida \citep[see][]{smith1982review} that might have been underlayed by a thin (ca. $100km$) lithosphere before the Pangaea assembling. \citep{mckenzie2015lithospheric}
 
-Fast anomalies are observed beneath the whole gulf of Mexico down to $150km$ deep. Despite the proximity with pan-african lithosphere, such high velocity anomalies represent older than $ca. 150Ma$ oceanic lithosphere. \citep{muller2008age,pindell2009tectonic}
--- No Magnetic anomalies recorded as in Pan African, Oceanic seafloor according to Pindel --
+		Fast anomalies are observed beneath the whole gulf of Mexico down to $150km$ deep. Despite the proximity with pan-african lithosphere, such high velocity anomalies represent older than $ca. 150Ma$ oceanic lithosphere. \citep{muller2008age,pindell2009tectonic}
+		-- No Magnetic anomalies recorded as in Pan African, Oceanic seafloor according to Pindel --
 
 
 % \subsubsection{Bermuda low velocity channel} 
@@ -330,14 +420,23 @@ Fast anomalies are observed beneath the whole gulf of Mexico down to $150km$ dee
 % En regardant mieux les cartes, je ne suis pas sur a 100\% Le LVF semble se diriger vers Bermuda. Il y a une faible anomalie qui fait le lien vers GMT mais latendance general de l'anomalie GMT Bermuda LVF ne semble pas etre la meme chose. Je prefere finir la partie GMT et comprendre les mecanismes, lire plus de biblio lies aux LVF et faire les liens. (Pour aller plus loin que Huaiyu2014 et Scaeffer2014)
 
 \subsubsection{The Great Meteor track}
-Our model images a slow velocity anomaly in agreement with the reconstruction of the Great Meteor Track proposed by \cite{heaman2000timing}.
-Below $100km$ the pan african lithosphere is cut in two by a slow velocity anomaly beneath the New England seamounts (youngest part of the GMT). Further East, the slow anomaly follows the GMT crossing the continental shelf, Appalachian and Grenville orogens down to $200km$. 
-This slow anomaly corresponds to the V-shape dent, or divot, observed by \cite{lee1997upper} who explained the feature by the presence of water in the mantle. 
-We observe at $250km$ that the slow anomaly go further inland and crosses the Superior Craton northward until the Hudson bay following the GMT.
+	\begin{figure}
+		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_GMTrack.pdf}}
 
-\cite{heaman2000timing}, based on $U-Pb$ perovskite age determinations of kimberlites, proposed a progressive southeastward younging of kimberlite magmatism throughout much of eastern North America. Considering it as a strong support for small volume mantle melting that have occurred along the continental portion of the Mesozoic Great Meteor mantle plume hotspot track initiated during the opening of the North Atlantic Ocean at about $200Ma$. \citep[See figure 4. in][]{heaman2000timing}
+		\caption{Cross Section of the lithosphere along the Great Meteor track based on \cite{heaman2000timing} construction}
+		\label{gmtcross}
 
-\cite{davies1994thermomechanical} described a process of thermo-mechanical erosion which involves heating-softening of the lithospheric base by a plume tail, followed by mechanical removal of the material due to convective transfer. \citep{rondenay2000lithospheric}
+	\end{figure}
+
+	Our model images a slow velocity anomaly in agreement with the reconstruction of the Great Meteor Track (thin red line in figure ~\ref{3d-VS}) proposed by \cite{heaman2000timing}.
+	Below $100km$ the pan african lithosphere is cut in two by a slow velocity anomaly beneath the New England seamounts (youngest part of the GMT). Further East, the slow anomaly follows the GMT crossing the continental shelf, Appalachian and Grenville orogens down to $200km$. 
+	This slow anomaly corresponds to the V-shape dent, or divot, observed by \cite{lee1997upper} who explained the feature by the presence of water in the mantle. 
+	We observe at $250km$ that the slow anomaly go further inland and crosses the Superior Craton northward until the Hudson bay following the GMT.
+	See the cross section along the re-built GMT in figure ~\ref{gmtcross}.
+
+	\cite{heaman2000timing}, based on $U-Pb$ perovskite age determinations of kimberlites, proposed a progressive southeastward younging of kimberlite magmatism throughout much of eastern North America. Considering it as a strong support for small volume mantle melting that have occurred along the continental portion of the Mesozoic Great Meteor mantle plume hotspot track initiated during the opening of the North Atlantic Ocean at about $200Ma$. \citep[See figure 4. in][]{heaman2000timing}
+
+	\cite{davies1994thermomechanical} described a process of thermo-mechanical erosion which involves heating-softening of the lithospheric base by a plume tail, followed by mechanical removal of the material due to convective transfer. \citep{rondenay2000lithospheric}
 % This hypothesis is based on different points:
 % \begin{itemize}
 % \item The lithosphere is moving above a fixed mantle where plume originate \citep[e.g.][]{morgan1972deep}
