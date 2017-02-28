@@ -25,6 +25,7 @@
 
 	% bb=llx lly urx ury :
 
+
 	\caption{\baselineskip 18pt
 	Large scale Precambrian architecture of North America (modified from \cite{whitmeyer2007tectonic}. Colours indicate ages of different regions, as shown in the legend. The stable cratonic core is defined by the Rocky Mountain Front to the west (dashed dark grey line), defined by the surface trace of deformation), and the appalachian fron to the east (solid light red line). The solid blue line demarcates the westward extent of the Grenville/Llano Front. The solid red line along the Cordillera province demarcates the breakup of Rodinia. Solid green lines indicate tectonic plate boundaries. Abreviations are as follows: RW, re-worked; GBA, Great Bear Arc; BHT, Buffalo Head Terrane; Taltson, Talston Arc; Rimbey, Rimbey Arc; Tornagat, Torngat Arc; L.B.A, Little Belt Arc; LRA; THO, Trans-Hudson Orogen; RGR, Rio Grande Rift; Reelfoot, Reelfoor Rift; Kwn.R, Kewanowan Rift; Sask, Sask Craton; WY, Wyoming Province; Med. Hat., Medicine Hat Block; Grt. Rhy, Granite–Rhyolite Province; Grenville, Grenville Province.
 	}
@@ -80,7 +81,7 @@ Adding teleseismic data allows better azimuthal coverage of the target region th
 
 \subsection{Dataset and model parametrization}.
 
-\begin{figure}[ht]
+\begin{figure}[p]
 	\centering
 	\begin{tabular}{ccc}
 		\includegraphics[width=1\textwidth]{figures/map_events_stn_global.png}
@@ -208,7 +209,7 @@ Inside the well-sampled target region, we define a level 7 spherical grid ($1^{o
 
 \end{figure}
 
-During the inversion, all the synthetic seismograms are computed using the regional SEM code RegSEM \citep{cupillard2012regsem} that takes into account effects of oceans, topography/bathymetry, ellipticity, and anelasticity, and where the limits of the computational domain are dealt with using absorbing boundaries. 
+During the inversion, all the synthetic seismograms are computed using the regional SEM code RegSEM \citep{cupillard2012regsem} that takes into account effects of oceans, topography/bathymetry, ellipticity, and anelasticity, and where the limits of the computational domain (white box around North America in Figure~\ref{injection} and red box in Figure ~\ref{map_evt_stn}) are dealt with using absorbing boundaries. 
 The synthetic seismograms associated with regional data (i.e. where both the seismic stations and the earthquake are located within the regional modeling domain) do not require any specific treatment and are computed as in our previous studies using RegSEM \citep[e.g.][]{yuan2014lithospheric}. 
 The synthetic seismograms associated with teleseismic data (i.e. where the earthquake and the seismic stations are located outside and inside the regional modeling domain, respectively) are obtained using a two step procedure as proposed by \cite{masson2016box} as follows. 
 
@@ -221,7 +222,7 @@ We typically achieve a data compression ratio of between 10 and 100 with no sign
 During the inversion, the global recordings are transformed to virtual sources that regenerate the global wavefield regionally. 
 This operation is done on the fly by the RegSEM code.
 
-Overall, the additional computational effort to account for teleseismic events consists of one global simulation per teleseismic event. These simulations are done once and for all before the inversion starts.
+Overall, the additional computational effort to account for teleseismic events consists of one global simulation per teleseismic event. These simulations are done once and for all before the inversion starts. A comparison between regular $SPECFEM3D\_globe$ and ``RegSEM + virtual sources`` synthetics is shown in Figure~\ref{injection}.
 
 \subsection{Inverse modelling}
 
@@ -256,7 +257,7 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 	\includegraphics[width=1\textwidth]{figures/Vs-60-300-for-paper.png}
 
 	\caption{\baselineskip 18pt
-	3D isotropic shear wave velocity structure of the continent. Map views are shown from 60 km down to 300 km, shown as variations with respect to the global mean (thick red line in Figure ~\ref{1daverage}). 
+	3D isotropic shear wave velocity structure of the continent. Map views are shown from 60 km down to 300 km, shown as variations with respect to the regional mean (thick red line in Figure ~\ref{1daverage}). 
 	% Labels are: BP, Blake Plateau; NQ, New Quebec Orogen; THO, Trans-Hudson Orogen. State abbreviations are: CO, Colorado; MT, Montana; ND, North Dakota; SD, South Dakota; and WY, Wyoming. 
 	% The geological limits of the cratonic crust are indicated as follows: (to be defined when using final figures... 
 	}
@@ -280,7 +281,8 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 \end{figure}
 
 
-The tomographic inversion results for $V_S$ and $\xi$ are presented in figures ~\ref{3d-VS,3d-Xi}. We divide the model description and interpretation into two parts, focusing first on the continent-wide structure and then, in more detail, on eastern different regions.
+The tomographic inversion results for $V_S$ and $\xi$ are presented in figures \ref{3d-VS} and \ref{3d-Xi} respectvely. 
+We divide the model description and interpretation into two parts, focusing first on the continent-wide structure and then, in more detail, on eastern different regions.
 
 \subsection{Continental model}
 \begin{figure}[ht]
@@ -302,8 +304,11 @@ Closer to the center of the continent, region like Slave, T.H.O, Juvenile arcs a
 
 The average of $\xi$ is higher than $1$ (which means that $V_{SH} > V_{SV}$), but lower than the global average, the latter influenced by the strong $\xi > 1$ oceanic signature.
 % where shearing is more important. 
-Both trends are similar with depth, but the maximum in $\xi$ is slightly deeper than in the global average and the change from $V_{SH} > V_{SV}$ to $V_{SH} < V_{SV}$ is reached at ca. $420km$. {\color{red} This feature was already present in the global model, and perturbations below that depth are <1\% So I dont think the model adds more informations compared to SEMucb}.
-Regions showing highest $\xi$ values 
+Both trends are similar with depth, but the maximum in $\xi$ is slightly deeper than in the global average and the change from $V_{SH} > V_{SV}$ to $V_{SH} < V_{SV}$ is reached at ca. $420km$. 
+
+{\color{red} This feature was already present in the global model, and perturbations below that depth are <1\% So I dont think the model adds more informations compared to SEMucb}.
+
+I am on this part..
 
 \subsection{Beneath the craton}
 
@@ -324,8 +329,8 @@ Regions showing highest $\xi$ values
 % Gung 2003 Positive anomalies of dlnxi down to 400km in the craton.
 
 Our study confirms the presence of a thick lithospheric root in the craton with faster than average $V_S$ down to $250km$ depth, with highest velocities, ca. $4.8km.s^{-1}$, located at depths shallower than  $150km$ (e.g. Figure~\ref{cratoncross}). 
-Laterally, the cratonic root in $V_S$ coincides roughly with precambrian aged crust (see Figure~\ref{3d-VS} at from 60 to 150km deep)
-The western edge of the craton follows the RMF, instead of the western breakup line (See the red thin line in Figure~\ref{mapgeol} which coincides with RMF in Canada, but is diverging westward in the U.S.). While the eastern/south-esatern coincides with the Llano-Grenville Front (See the blue thin line in Figure~\ref{mapgeol}). 
+Laterally, the cratonic root in $V_S$ coincides roughly with precambrian aged crust (see Figure~\ref{3d-VS} from 60 to 150km deep)
+The western edge of the craton follows the RMF (black thick dashed line in Figure \ref{mapgeol}), instead of the western breakup line (See the red thin line in Figure~\ref{mapgeol} which coincides with RMF in Canada, but is diverging westward in the U.S.). While the eastern/south-esatern coincides with the Llano-Grenville Front (See the blue thin line in Figure~\ref{mapgeol}). 
 The northern part ends at the coastline of the Arctic ocean including the arctic archipelago and Greenland. 
 
 
@@ -343,9 +348,15 @@ The northern part ends at the coastline of the Arctic ocean including the arctic
 
 \end{figure}
 
-These lateral edges are well observed down to $150km$ depth. Below that, the cratonic root retracts toward the center of the archaean continent and is still present beneath Slave, Hearne/Rae and western Superior cratons as shown in Figure~\ref{cratoncrossedge}. 
-Everywhere within the craton, a negative gradient of $V_S$ is observed, marking the base of the lithosphere, with a minimum of $\sim 4.6km.s^{-1}$ reached at $\sim 300km$ depth. While the base of the lithosphere (and top of the low velocity zone- LVZ) shows strong topography, the bottom of the LVZ appears largely flat, in particular under the  Slave, Hearne/Rae and western Superior cratons.
-As observed in \cite{babuvska1998age,gung2003global,yuan2014lithospheric}, there are large lateral variations  $\xi$ down to $\sim 200km$ depth, with regions of reduced radial anisotropy, in contrast to the more uniform, positive $dln(\xi)$ structure in this depth range in the oceans. Generally, $\xi$ always appear higher than 1. Around 100 km negative $dln(\xi)$ compared to the isotropic case are observed in Mexico, at the southern part of Florida, the southern part of the Superior craton comprising the Mid Continental rifting, the southern part of the Granit Rhyiolite Province comprising the Failed Rifting area and finally beneath Baffin Island.
+These lateral edges are well observed down to $150km$ depth. Below that, the cratonic root retracts toward the center of the archaean continent and is still present beneath Slave, Hearne/Rae and western Superior cratons as shown in Figure \ref{cratoncrossedge}. 
+Everywhere within the craton, a negative gradient of $V_S$ is observed, marking the base of the lithosphere, with a minimum of $\sim 4.6km.s^{-1}$ reached at $\sim 300km$ depth. 
+While the base of the lithosphere (and top of the low velocity zone- LVZ) shows strong topography, the bottom of the LVZ appears largely flat, in particular under the  Slave, Hearne/Rae and western Superior cratons.
+
+As observed in \cite{babuvska1998age,gung2003global,yuan2014lithospheric}, there are large lateral variations  $\xi$ down to $\sim 200km$ depth, with regions of reduced radial anisotropy, in contrast to the more uniform, positive $dln(\xi)$ structure in this depth range in the oceans (See figure \ref{3d-Xi}. 
+Below 250km, it is interesting to note that there is a large band of positive anomaly crossing the whole continent (across the US), making the connection between the Pacific and Atlantic mantles.
+
+Generally, $\xi$ always appear higher than 1. 
+Except around 100 km, negative absolute values of $\xi$ (lower than -$1\%$) are observed in Mexico, at the southern part of Florida, the southern part of the Superior craton comprising the Mid Continental rifting, the southern part of the Granit Rhyiolite Province comprising the Failed Rifting area and finally beneath Baffin Island. 
 
 
 \subsubsection{Wyoming}{h}
