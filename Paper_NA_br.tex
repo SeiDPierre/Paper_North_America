@@ -5,8 +5,18 @@
 \usepackage[english]{babel} 
 \usepackage{xcolor}
 \usepackage{textcomp}
-\usepackage{graphicx}
+\usepackage[draft]{graphicx}
 \usepackage{natbib} % Powerful citation management
+
+\usepackage{hyperref}
+\hypersetup{pdftitle={Introduction à LaTeX},
+           pdfauthor={Pierre Clouzet},
+           colorlinks=true,
+           plainpages=false,
+           colorlinks=true,
+           urlcolor=blue,
+           citecolor=red,
+           pdfstartview=FitH}
 % \usepackage{float}
 % \floatplacement{figure}{p}
 \bibpunct[; ]{(}{)}{,}{a}{}{;} % Custom minimal bibliography styling
@@ -190,126 +200,169 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 
 	The tomographic inversion results for $V_S$ and $\xi$ are presented in figures \ref{3d-VS} and \ref{3d-Xi} respectvely. 
 	We divide the model description and interpretation into two parts, focusing first on the continent-wide structure and then, in more detail, on eastern different regions.
+	Purpose:
+	Is there a link between age of the crust and the lipthospheric structure
+	Do images give us insight on cratonozation process - to compare with known process and thermal - chemistry data
+	Deformation of the lithosphere by hotspot basal drag
+
+% 	[42] Throughout the Precambrian it is expected that the processes responsible for the formation of continental lithosphere evolved as Earth cooled and modern-style plate tectonics began. In the broadest sense, this is well established seismologically in that the mantle beneath the shields is characterized by elevated seismic wave speeds compared to younger Phanerozoic mantle. The high wave speeds beneath the cratons are usually explained in the context of a depleted composition [e.g.,Jordan, 1988].
+
+% [43] In southern Africa, Archean domains are usually characterized by faster seismic wave speeds than surrounding younger Proterozoic mobile belts [e.g., Li and Burke, 2006; Chevrot and Zhao, 2007], with the implication that mantle composition and/or plate formation processes evolved between Archean and Proterozoic times. In contrast, in Australia, there is no clear distinction between Archean and Proterozoic mantle lithospheric wave speed structure [e.g., Simons et al., 1999; Fishwick et al., 2005]. The same is true for Fennoscandia [e.g., Bruneton et al., 2004], whereas Lebedev et al. [2009] found systematically slower wave speeds beneath the Proterozoic fold belts of central Asia compared to the cratonic Russian platform.
+
+% [44] The tectonic history of our study area spans ∼3 Ga of the geological record, from Archean formation of the Superior craton to the Paleozoic accretion of the Appalachian terranes to Laurentia. Our tomographic images thus provide an excellent opportunity to test whether there is a systematic age-dependence on seismic wave speed anomalies.
+
 
 	\subsection{Continental model}
 
+		En attendant le code de cluster analysisde Marco je n'ai pas touche a cette partie
+
 		As observed in many other studies, the average isotropic shear velocity $V_S$ in the shallow upper mantle beneath North America (NA) is high compared to the global average, which contains contributions from large oceanic regions (Figure ~\ref{1daverage}). 
-		The difference persists until ca. $270 \: km$ depth and then fades away, though, $V_S$ remains slightly higher in NA than in the global average. 
+		The difference persists until $\sim$270~km depth and then fades away, though, $V_S$ remains slightly higher in NA than in the global average. 
 		Compared to the continental average, precambrian provinces like Wyoming, Yavapai, Mazatzal, Great Rhyolites and Grenville are caracterized by slower velocities. 
 		The cordillera region shows the slowest velocities, close the global average as for $\xi$. 
-		Closer to the center of the continent, region like Slave, T.H.O, Juvenile arcs and orogens (e.g. Wopmay), Superior; show higher velocities with the Slave province caracterized by a positive gradient above $100 \: km$ deep.
+		Closer to the center of the continent, region like Slave, T.H.O, Juvenile arcs and orogens (e.g. Wopmay), Superior; show higher velocities with the Slave province caracterized by a positive gradient above 100~km deep.
 
 		%The global negative gradient of $V_S$ near $150km$ is here less pronounced beneath the continent by the influence of the positive gradient beneath the cratonic part. (I don't think we need stress this -discussing differences between east and west will be more interesting.
 
-		The average of $\xi$ is higher than $1$ (which means that $V_{SH} > V_{SV}$), but lower than the global average, the latter influenced by the strong $\xi > 1$ oceanic signature. 
-		Both trends are similar with depth, but the maximum in $\xi$ is slightly deeper than in the global average and the change from $V_{SH} > V_{SV}$ to $V_{SH} < V_{SV}$ is reached at $\sim 420 \: km$. 
-		At shallower depths than $\sim 200 - 220 \: km$, strongest variations relative the continental average are observed ($+/- 4 \: \text{to} \: 8 \%$, compared to $+/- 1 \: \text{to} \: 3 \%$). 
-		Alternations of positive and negative gradient are observed from $50 \: \text{to} \: 400 \: km$ with maxima diminishing along depth. Below than $420 \: km$, negative to isotropic structures with very small lateral variations (i.e $ dln(\xi) < 0.5 \%$) are observed.
+		The average of $\xi$ is higher than 1 (which means that $V_{SH} > V_{SV}$), but lower than the global average, the latter influenced by the strong $\xi > 1$ oceanic signature. 
+		Both trends are similar with depth, but the maximum in $\xi$ is slightly deeper than in the global average and the change from $V_{SH} > V_{SV}$ to $V_{SH} < V_{SV}$ is reached at $\sim$420~km. 
+		At shallower depths than 200 to 220~km, strongest variations relative the continental average are observed ($+/- 4 \: \text{to} \: 8 \%$, compared to $+/- 1 \: \text{to} \: 3 \%$). 
+		Alternations of positive and negative gradient are observed from 50 to 400 km with peak values diminishing along depth. 
 
 		% A negative gradient is regionally observed with its minima at $100 \Km$ of $\sim \xi = 1.02$ evolving to a positive gradient with a maximum of $\xi = 1.03$ located at $150 \: km$. 
 		% where shearing is more important. 
-		
-
-		{\color{red} This feature was already present in the global model, and perturbations below that depth are <1\% So I dont think the model adds more informations compared to SEMucb}.
 
 	\subsection{Beneath the craton}
 
 	% Gung 2003 Positive anomalies of dlnxi down to 400km in the craton.
-
-		Our study confirms the presence of a thick lithospheric root in the craton with faster than average $V_S$ down to $250 \: km$ depth, with highest velocities, ca. $4.7 \: km.s^{-1}$, located at depths shallower than  $150 \: km$ (e.g. Figure~\ref{cratoncross}). 
-		Laterally, the cratonic root in $V_S$ coincides roughly with precambrian aged crust (see Figure~\ref{3d-VS} from 60 to 150km deep).
-		The western edge of the craton follows the RMF (black thick dashed line in Figure \ref{mapgeol}), instead of the western breakup line (See the red thin line in Figure~\ref{mapgeol} which coincides with RMF in Canada, but is diverging westward in the U.S.). While the eastern/south-eastern coincides with the Llano-Grenville Front (See the blue thin line in Figure~\ref{mapgeol}). 
+		\paragraph{age of the crust and its corresponding lithosphere}
+		Our study confirms the presence of a thick lithospheric root in the craton with faster than average $V_S$ down to 250~km depth, with highest velocities, $\sim$4.7~km.s$^{-1}$, located at depths shallower than  150 km (e.g. Figure~\ref{cratoncrossedge} and \ref{cratoncrosscenter}). 
+		Laterally, the cratonic root in $V_S$ coincides roughly with precambrian aged crust (see Figure~\ref{3d-VS} from 60 to 150~km deep and Figure~\ref{cratoncrossedge}.a ).
+		The western edge of the craton follows the RMF (black thick dashed line in Figure~\ref{mapgeol}), instead of the western breakup line (See the red thin line in Figure~\ref{mapgeol} which coincides with RMF in Canada, but is diverging westward in the U.S.). 
+		While the eastern/south-eastern coincides with the Llano-Grenville Front (See the blue thin line in Figure~\ref{mapgeol}). 
 		The northern part ends at the coastline of the Arctic ocean including the arctic archipelago and Greenland. 
 
-		These lateral edges are well observed down to $150 \: km$ depth. 
-		Below that, the cratonic root retracts toward the center of the archaean continent and is still present beneath Slave, Hearne/Rae and western Superior cratons as shown in Figure \ref{cratoncrossedge}. 
-		Everywhere within the lithospheric core, a negative gradient of $V_S$ is observed, marking the base of the lithosphere \citep{eaton2009elusive}, with a minimum of $\sim 4.6 \: km.s^{-1}$ reached at $\sim 300 \: km$ depth. 
-		While the base of the lithosphere (and top of the low velocity zone - LVZ) shows strong topography, the bottom of the LVZ appears largely flat, in particular under the Slave, Hearne/Rae and western Superior cratons.
+		These lateral edges, coinciding with precambrian crust, are well observed down to 150 km depth. 
+		Below that, the lithospheric core retracts toward the center of the precambrian continent comprising north western Juvenile arcs and orogens (e.g. Wopmay and BHT), north-eastern part of Juvenile crusts (e.g Yavapai/Mazatzal/Gr. Rhyolite), Slave, Hearne/Rae and western Superior cratons; while eastern Superior and Wyoming are cast out, as shown in Figure \ref{3d-VS}. 
+		There are no obvious correlations between the age of a province and the amplitudes of anomalies and their extension in depth. 
+		For example, archaean eastern Superior craton has $\sim 0\% \: V_S$ anomalies below 200 km (compared to $\sim+$ 4 $\%\:V_S$ beneath the western Superior), similar to the proterozoic Grenville province and archaean Wyoming ( also observed in Gao et al. 2002, Griffin et al. 1998, Menzies et al. 1993, Menzies et al. 2007); while the proterozoic belt of THO shows as high anomalies at the same depth as within the archaean Slave or western Superior lithosphere. 
+		It is interesting to notice that at shallower depths than 100 km, the THO which welded the Superior and Rae/Hearne cratons \citep{hoffman1988united}, shows lighter (i.e, $+4\%$ compared to $+8\%$) positive anomalies than its archaean surrounding. 
+		The THO comprises the archaean aged Sask craton (See Figure \ref{mapgeol}).
+		The mantle beneath this exotic craton is interpreted to have been detached and replaced by both the Superior and the Hearne mantle lithosphere during final collision of the orogen \citep{nemeth2005lithospheric}. 
+		This interpretation, according to \cite{faure2011seismic} can be extrapolated farther to the east and may explain why Trans-Hudson orogen has no imprint in the upper mantle. 
 
-		As observed in \cite{babuvska1998age,gung2003global,yuan2014lithospheric}, there are large lateral negative variations $\xi$ down to $\sim 200km$ depth, with regions of reduced radial anisotropy, in contrast to the more uniform, positive $dln(\xi)$ structure in this depth range in the oceans (See figure \ref{3d-Xi}). 
+		As observed in \cite{babuvska1998age,gung2003global,yuan2014lithospheric}, there are large lateral negative variations $\xi$ down to $\sim 200km$ depth, with regions of reduced radial anisotropy, in contrast to the more uniform, positive $dln(\xi)$ structure in this depth range in the oceans (See figure \ref{3d-Xi} where $dln(\xi)$ are shown according the Isotropic case ($\xi = 1$)). 
 		
-		{\color{red} I would like to point that we dont see the same features as in \cite{marone2007three} with the craton showing same $\xi \: (> 1)$ than oceanic lithopshhere, while western active part and greenvile-appalachian area shows reduced $\xi < 1$. Different causes to me: starting model, I need to compare my and her starting model, or simply the lateral parameterisation (8deg (federica) compared to 2deg (Me)).}
-
 		Below 250km, it is interesting to note that there is a large band of positive $dln(\xi)$ crossing the whole continent (across the US), making the connection between the Pacific and Atlantic mantles. 
-		This feature is not present in most of Canada, where negative $dln(\xi)$ structure persist down to 300km.
+		This feature is not present in most of Canada, where negative $dln(\xi)$ structure persist down to 400km and can be linked with the deep strong $\xi$ layer of \cite{gung2003global}. Our higher resolution model shows that this layer of strong $\xi$ may not be present beneath the whole cratonic lithosphere and it seems that this feature is marking a connection with Low Velocity Fingers (LVF) observed by \cite{french2013waveform}. % Below, this feature is still slightly visible beneath the US, while negative values of $dln\xi$ are observed beneath Canada
+		% In particular, surface wave anisotropy studies show that cratons are underlain by a layer of radial anisotropy, where horizontally polarized shear waves are faster than vertically polarized shear waves in the depth range of 250–400 km 
 		Generally, $\xi$ always appears higher than 1. 
-		Except between 60 and 100 km, lower than 1 of $\xi$ ($V_{SV} > V_{SH}$) are observed in Mexico, at the southern part of Florida, the southern part of the Superior craton comprising the Mid Continental rifting, the southern part of the Granit Rhyiolite Province comprising the Failed Rifting area, a large area comprising southern Hearne, Medicine hat, northern Wyoming, B.H.T, Cordillera; and finally beneath Baffin Island. This feature can be better observed in Figure \ref{3d-xi-iso-100km} where perturbations are shown according the Isotropic case ($\xi = 1$)
+		Except between 60 and 100 km, lower than 1 of $\xi$ ($V_{SV} > V_{SH}$) are observed in Mexico, at the southern part of Florida, the southern part of the Superior craton comprising the Mid Continental rifting, the southern part of the Granit Rhyiolite Province comprising the Failed Rifting area, a large area comprising southern Hearne, Medicine hat, northern Wyoming, B.H.T, Cordillera; and finally beneath Baffin Island. 
+		% This feature can be observed in Figure \ref{3d-Xi} where perturbations are shown according the Isotropic case ($\xi = 1$)
 
 
-	\subsubsection{Archaean provinces}
+		\paragraph{Lithospheric layering}
+		Everywhere within the lithospheric core, from 60 to 100-150 km $V_S$ increases with depth (positive radial gradient) with a maximum of $\sim$4.7-4.8 km.s$^{-1}$ between 100 and 150 km (See Figure~\ref{cratoncrosscenter}). This can be an indication of a Mid lithospheric discontinuity within the lithopsheric core. 
+		% However, MLD imaging is beyond the scope of this study.  
+		Deeper, a negative gradient of $V_S$ is observed, marking the base of the lithospheric core \citep{eaton2009elusive}, with a minimum of $\sim$4.6 km.s$^{-1}$ reached at $\sim$270 km depth. 
+		Such structure is very well illustrated at the center of the continent under the Slave, Hearne/Rae, THO and western Superior cratons; which is in contrast with the surrounding of the core, where velocities decrease with depths down to at most 100-150 km and deeper increase down to 400 km (see Figure~\ref{cratoncrosscenter} along the FF' and GG' cross sections of radial $V_S$ gradient showing that within the lithospheric core of NA is characterized by a positive gradient down to $\sim$150~km ,and then, a negative gradient down to at least $\sim$250~km.). 
+		Beneath other Archean provinces like Wyoming craton (see Figure~\ref{cratoncrosscenter} along the FF' cross section), west to the RMF, such structure is not present. 
+		Velocities decrease down to 120 km and then increase deeper than 400 km. 
+		East of the RMF in Wyoming craton, velocities are monotically decreasing down to 250 km. 
+		Also, beneath the eastern Superior craton, high velocities are confined at shallower depths than 100 km, and the radial structure is monotically decreasing with depth. 
+		% The lithospheric core in North
+		While the base of the lithosphere (and top of the low velocity zone - LVZ) shows strong topography, the bottom of the LVZ appears largely flat, in particular under the Slave, Hearne/Rae and western Superior cratons (See cross sections in Figure~\ref{cratoncrosscenter} and \ref{cratoncrossedge}.
 
-		\paragraph{Wyoming and Medecine Hat}
-			The Wyoming craton was strongly affected by a regional metamorphic event related to the Trans-Hudson orogen, which juxtaposed a number of Archean cratons during the Paleoproterozoic development of Laurentia \citep{hoffman1989precambrian}.
-			This highly reworked craton does not show as high anomalies as within the craton nucleus (+2\% instead of +4 \:\text{to}\: 8\%) as shown in figure ~\ref{3d-VS}. 
-			It is split into 2 distinctive part. A western part showing low velocities influenced by the active tectonic with a radially positive gradient in terms of $V_S$. 
-			In contrast with the eastern part showing higher velocities with a radially negative then positive gradient which marks the western border of the craton nucleus. 
-			The depth of negative gradient's minima is variable, from 70 (western part) to 250km (eastern part) deep. 
-			The separation between the two areas coincides with the RMF.
-			In terms of $\xi$, it is characterized by negative anomalies down to 250km deep. 
-			The northern part shows highest negative $dln(\xi)$ and $V_{SV}$ appears higher than $V_{SH}$ of about 2\% between 60 and 100km. This feature is common with the Medicine Hat province (See Figure \ref{3d-xi-iso-100km}).
+		Regarding the radial evolution of $\xi$, cross section of the $\frac{d\xi}{dz}$ in Figure~\ref{cratoncrosscenter} shows alternances of trends.
+		$\xi$ generally decrease from 50 to $\sim$70-100 km, then increase down to 150 km, decrease again down to $\sim$220-250 km and finally decrease to the Isotropy down to the Transition zone. Compared to $\frac{dV_S}{dz}$, $\frac{d\xi}{dz}$ in terms of amplitude is 4 order of magnitude below. It appears the band of negative $\frac{d\xi}{dz}$ between 150 and 250 km shows a topography at its upper limit. Around the lithopheric core, the band is $\sim$100 km thick between 150 and 250 km deep; while within the lithospheric core, the band is $\sim$50 km thick between 170 and 220 km deep. This feature might be a characteristic of the $\xi$ structure beneath a lithospheric core which needs to be confirmed in other cratonic studies.
 
-		\paragraph{Slave}
-			The Slave craton shows typical lithospheric craton signatures with higher than average velocities (See figures \ref{3d-VS} and \ref{cratoncross}), and negative perturbations of $\xi$ (See Figure \ref{3d-Xi}). 
-			We can note that the average of $\xi$ is the only one higher than the continental mean, compared to the other Archaean provinces (See Figure \ref{1daverage}).
-			It shows in the entire region a positive velocity gradient with a maximum of ca. $4.7 \: km.s^{-1}$ associated with a maximum of $\xi$ at ca. $150 \: km$ deep. However we don't observe, both the Central Slave Mantle Conductor and the $4.8 \: km.s^{-1} \: V_S$ profile extending from $160 \: \text{to} \: 250 \: km$, obtained from joint inversion of receiver function, surface wave dispersion curve, and magnetotelluric data of \cite{moorkamp2010joint}. 
-			Deeper, a negative gradient is observed with a minimum of ca. $4.65 \: km.s^{-1}$ at ca. $250 - 270\: km$ deep in agreement with \cite{chen2007new}. Not sure I should cite error bars are .0.2kms-1...
-			Although the Slave lithosphere shows highest velocities at $150 \: km$, above $100 \: km$ velocities are slightly higher than the continental average ($dln(V_S)< 4\%$). 
+		To summarize, as observed in many previous tomographic studies of North America, we observe a lithospheric core beneath the Precambrian shield caracterized by high $V_S$ and reduced $\xi$. 
+		According to our higher resolution model, we dont observe a direct link between the age of the crust and its underlying lithosphere. Most of the core is located beneath precambrian crust but the history of the amalgamation and destruction (e.g convective removal, see \cite{lee2011building}) of the craton complexified the structure of its lithosphere. 
+		This is the case for the archean Wyoming craton who does not share the same characteristic as other Archaean blocks (e.g Slave, Hearne, Rae, western Superior) and may have suffered from basal erosion \citep{s2005archean,lee2011building}. 
+		Moreover, we observe that the eastern lithospheric block of the archean Superior craton, also doesn't share the cratonic lithospheric structure. In the next chapter we will focus on this craton that may have endured basal deformation, or weakening, induced by the passage of the Great Meteor chain of hotspot.
 
-			Je voudrais ici mettre en lien avec les mesures de kimberlites/ eclogites de \cite{faure2011seismic,heaman2003timing} Aulbach et al., 2007, Jacob 2004 pour montrer que leur mesures estimant la profondeur de la pLAB (200 a 220) peut ne pas etre compatible avec les mesures tomo car leurs mesures datent d'entre 650Ma et 50Ma. Il peut y avoir eu un epaississement du mantle keel, mais je n'ai pas encore trouve d'arguments favoarbles... Ou alors que ce genre d'information peut etre mieux contraint via l'aniso azim mais tous leurs papiers comparent la LAB sismique avec Vs only.
+	\subsection{Basal traction beneath the lithosphere}
+	% Its thickness is defined by the limit at which the cooler temperatures of the boundary layer can be resolved from the mantle adiabat (which is pinned to the potential temperature of the mantle, i.e., the temperature of the convecting mantle if it were adiabatically decompressed to the surface of Earth in the solid state).
 
-			% Two firm LAB estimates come from MT. The star data point in the centre of the Slave Craton in northern Canada (Fig. 2e) is the LAB estimate of Moorkamp et al. (2010), derived from joint inver- sion of receiver function data, surface wave dispersion curve data, and magnetotelluric data from the EKTN POLARIS station. This eLAB + sLABrf + sLABsw value of 230 km (220–235 km) exceeds by 20–30 km the greatest pLAB values on the Slave Craton of 202 km for the Neoproterozoic Anuri pipe in NW Slave, 208 km from the Jurassic-aged Gahcho Kue pipe (formerly known as Kennedy Lake) in SW Slave, and the 202 km pLAB from the Eocene-aged Diavik pipe in the central Slave (Snyder and Grütter 2010). It is though well within the error limits of the poorly-resolved sLABsw esti- mate of 220 ± 60 km of Chen et al. (2007) based on only Rayleigh wave inversion from the same station (EKTN); here, the joint in- version of Moorkamp et al. (2010) has served to reduce the uncer- tainty considerably. 
-			{\color{red}Either the pLAB estimates are too low by 20–30 km, which is likely, or the lithosphere has grown by that order over the last 50 million years since the Eocene kimberlite eruptions in the central Slave, which is less likely, or aspects of both are operating.} \cite{jones2014electrical}
+	Notes for interprating Xenoliths studies. SEE DATATION OF GMT Model
+	% Determining the formation age of the underlying continental mantle is more challenging because mantle xenoliths, before entrainment in the host magma, typically reside at temperatures above the closure temperature of most radiometric systems; hence their internal isochron ages often reflect eruption ages
 
+	% Isotopic memory of older events is more likely preserved in whole rocks or mineral inclusions in diamonds. For example, radiogenic and unradiogenic whole-rock Sr and Nd isotopes, respectively, indicate Ga isolation in an incompatible-element- enriched environment (Cohen et al. 1984, Roden & Murthy 1985). Similarly, Nd model ages of garnet grains isolated in diamonds give Archean ages (Richardson et al. 1984). However, because Sr and Nd isotopes are incompatible elements, model ages based on these isotopic systems usually date only metasomatic events.
+	
+	% Better constraints on the timing of melt extraction and initial isolation from the convecting mantle are obtained from the Re-Os
 
-
-
+	Compare studies between ReOs and UPb and what they indicate
 		\paragraph{Superior Craton}
-			In our model, the Superior craton can be split in two parts: The western part showing typical cratonic structures while the eastern part shows slower velocities at all depths. Below $150km$, velocity anomalies are below $2\%$ (almost $0\%$). 
+			In our model, the Superior craton can be split in two parts: The western part showing typical cratonic structures while the eastern part shows slower velocities at all depths. Below 200 km, the distinction between the eastern and western part correlates the GMT. 
 
 		\paragraph{Western Ontario part}
 			The western Superior craton shows typical lithospheric craton signatures with highest velocities as shown in figure ~\ref{3d-VS} and in figure~\ref{cratoncross}. In terms of $\xi$, slight negative to zero perturbations are observed at the very western part, while close to the Mid continental rifting, highest negative perturbations indicate that $V_{SV}$ is higher than $V_{SH}$. This last feature is associated with the thinning of the cratonic lithosphere when crossing the Grenville front as observed by \cite{darbyshire2007new}.
-			In the entire region there is a positive velocity gradient with a maximum of ca. $4.7 \: km.s^{-1}$  associated with a maximum of $\xi$ at ca. $150km$ deep.
+			In the entire region there is a positive velocity gradient with a maximum of ca. $4.7 \: km.s^{-1}$ underneathed by a negative gradient  with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep.
+% 
+			% associated with a maximum of $\xi$ at ca. $150km$ deep.
 			
-			Deeper a negative gradient is observed with a minimum of ca. $4.6km.s^{-1}$ at ca. $250km$ deep. 
-			Opposed to the Slave craton, the topography of these extrema is variable. 
+			Opposed to the Slave craton, the topography of the top of the negative gradient is variable. 
 			From SW to NE, the core of maximum velocity can reach beween 70 and 150km of thickness. 
-			Beneath the maximum velocity region of ca. $150km$ the negative gradient appears stipper than beneath the $70km$ one, while the topography of the deeper positive gradient appears flat. 
+			Beneath the maximum velocity region of  $\sim$ 150 km the negative gradient appears stipper than beneath the $70km$ one, while the topography of the deeper positive gradient appears flat. The topography of the bottom of the negative gradient is observed flat {\color{red} It is the same in Slave - One linkk to share with other regions}
 			 
-			The band of minimum velocity within the cratonic root has similar amplitudes, in terms of velocity, than beneath the younger lithosphere but at shalower depths between $100$ and $150 \: km$. 
-			Following the Great Meteor track built by \cite{heaman2000timing}, which crosses the Superior craton, it is interseting to note that the low velocity channel beneath the base of the lithosphere shows lower velocties than usualy observed beneath the other Archaean cratons. 
-			Xenoliths analysis from kimberlites from Kirkaland Lake (south eastern part of the western Superior) exhibit some evidence of diamonds, i.e, the base of the lithosphere was deeper than 170 km at the time of kimberlitic eruption \citep{jones2014electrical} estimated at $160 - 152 \: Ma$ by \cite{heaman2000timing,heaman2003timing}. 
-			This can be interpreted as either the lithosphere is today thick, and the lower lithosphere was not sampled by xenolith entrainment in the kimberlitic magmas (but nevertheless diamonds were entrained), or the lowermost lithosphere has been eroded away since eruption, possibly by the movement of the North American plate over the Great Meteor hotspot \citep{heaman2000timing,jones2014electrical}. The latter being in agreement with our of observations. 
+			% The band of minimum velocity within the cratonic root has similar amplitudes, in terms of velocity, than beneath the younger lithosphere but at shalower depths between $100$ and $150 \: km$. 
+			Following the Great Meteor track built by \cite{heaman2000timing}, which crosses the Superior craton, it is interesting to note that the low velocity channel beneath the base of the lithosphere shows lower velocties than usualy observed beneath the other Archaean cratons. 
+			Xenoliths analysis from kimberlites at Kirkaland Lake (south eastern part of the western Superior) exhibit some evidence of diamonds, i.e, the base of the lithosphere was deeper than 170 km at the time of kimberlitic eruption \citep{jones2014electrical} estimated at $160 - 152 \: Ma$ by \cite{heaman2000timing,heaman2003timing}. 
+			This can be interpreted as either the lithosphere is today thick, and the lower lithosphere was not sampled by xenolith entrainment in the kimberlitic magmas (but nevertheless diamonds were entrained); or the lowermost lithosphere has been eroded away since eruption, possibly by the movement of the North American plate over the Great Meteor hotspot \citep{heaman2000timing,jones2014electrical}. In the study of \cite{faure2011seismic}, 23 $\%$ of kimberlite samples from southern Superior region contain diamonds. In contrast with 78 $\%$ at the northern Superior. This means that the diamond stability field within the mantle has been deteriorated through time and kimberlites that have passed across the mantle during/after such deterioration have less chances to intercept diamonds. \citep{faure2011seismic}
+
+			\cite{kaban2015cratonic} proposed that basal drag induced by plate motion caused a south-western shift of the Superior's cratonic root. A feature that was observed by the local inversion of gravity, topography, crustal structure and seismic data.
+
+			This basal deformation would have been enabled by the reheating of the lithosphere due to the passage of the Great Meteor hotpsot \citep[see][]{eaton2007seismic,kaban2015cratonic}.
+			Our observations show that despite the archaean age of the Superior craton, the lithospheric root thickness of a craton is not flat and can be altered as broadly observed within the eastern part of the Superior craton.
+
+			% Consequently, the diamond stability field has been partially or totally destroyed by thermal and/or chemical processes at dif- ferent times and in various areas of the upper mantle. The global and permanent deterioration of the diamond stability field through time implies that kimberlites that have passed across the mantle during or after an episode of metasomatism have less chance of intercepting preserved pockets of dia- monds. This explains why only 23 percent of the 96 kimber- lites in the southern Superior are diamondiferous and why the proportion of macro diamonds is very low; only seven kimberlites contain at least one macrodiamond.
+			% In contrast, 78 percent of the 55 kimberlites of the Central Superior craton, including the Victor mine at Attawapiskat and the Renard feasibility mine project in the Otish moun- tains, are located in the typical cold and depleted Archean shell, contain abundant diamonds with a high proportion of macro- and gem-quality diamonds and have a strong harzbur- gitic signature (Grütter et al., 2006).
+
+
 
 			% This slow anomaly could correspond to an extension the V-shape dent, or divot, observed by \cite{lee1997upper} who explained the feature by the presence of water in the mantle. 
 			% We observe at $250km$ that the slow anomaly go further inland and crosses the Superior Craton northward until the Hudson bay following the GMT.
 
 		\paragraph{Eastern Quebec part}
-			Compared to its western part, the structure here shows differences as shown in figure ~\ref{cratoncrossedge} 
-			Fast velocities are present down to $150 \: km$ deep but are slower and no perturbations are observed below $200 \: km$. 
-			The negative gradient is steeper and the minimum is radially thicker (more than $100 \: km$ thick compare to $\sim 50 \: km$ beneath the craton nucleus). 
-			% However at the center, the minimum channel is not continuous and shows higher (still slower than the center of the western Superior) velocities.
-			% the gradual trend in velocity is replaced by an almost constant slow anomaly from $150$ to $300km$ deep.   
+			Compared to its western part, the structure here is different than typical cratonic structure as shown in figure ~\ref{cratoncrossedge} 
+			Fast velocities are present down to 150 km marking the shelf of the lithospheric nucleus. 
+			Below, zero to slight positive anomalies caracterize the eastern superior craton (as in the wedded Grenville belt) showing the retractation toward the continent's center of lithospheric nucleus. A feature that was not present in our previous less well resolved models \citep{marone2007three,yuan20113,yuan2014multiscale}.
+			Except at its south western part, negative gradient in terms of velocity is present from 50 to 250 km deep. 
+			Whereas at the center of the continent, velocities are usually increasing (positive gradient) between 50 and 150 km, here it monotically decreases.
+			The negative gradient is steeper and the minimum is radially thicker (more than 100 km thick compare to $\sim$50 km beneath the craton nucleus). 
 
-		\paragraph{Trans Hudson Orogen}
-			The Trans Hudson Orogen (THO) is a belt of reworked archaean aged region. It refers to a major Paleo Proterozoic tectonic event (between $2.0$ to $1.8Ga$) that welded the Hearne, Wyoming, and Superior archaean blocks to form core of Laurentia \citep{hoffman1988united,whitmeyer2007tectonic}.
-			% At shallow depths ($ < 60km$) shows lower velocities than archaean surroundings. 
-			It shows typical lithospheric craton signatures with higher than average velocities (See figures \ref{3d-VS} and \ref{cratoncross} associated with negative $\xi$ perturbations. 
-			It is interesting to notice that at shallower depths than $100km$, the THO which welded the Superior and Rae/Hearne cratons, shows lighter (i.e, $+4\%$ compared to $+8\%$) positive anomalies than its archaean surrounding. This feature is associated with negative anomalies of $\xi$. While most of the proterozoic root start to thin out at $150km$, the THO at the vicinity of the hudson bay shows as high anomalies as Rae/Hearne and Superior areas associated with zero to positive anomalies in term of $\xi$. 
-			The THO comprises the archaean aged Sask craton (See Figure \ref{mapgeol}. 
-			The mantle beneath this exotic craton is interpreted to have been detached and replaced by both the Superior and the Hearne mantle lithosphere during final collision of the orogen \citep{nemeth2005lithospheric}. 
-			This interpretation, according to \cite{faure2011seismic} can be extrapolated farther to the east and may explain why Trans-Hudson orogen has no imprint in the upper mantle.
+			Observed also by Villemaire 2012 with P-wave arrival time. Nice discussion in the end of the paper about lithospheric thinning. 
+
+% 		\paragraph{Trans Hudson Orogen}
+% 			The Trans Hudson Orogen (THO) is a belt of reworked archaean aged region. It refers to a major Paleo Proterozoic tectonic event (between $2.0$ to $1.8Ga$) that welded the Hearne, Wyoming, and Superior archaean blocks to form core of Laurentia \citep{hoffman1988united,whitmeyer2007tectonic}.
+% 			% At shallow depths ($ < 60km$) shows lower velocities than archaean surroundings. 
+% 			It shows typical lithospheric craton signatures with higher than average velocities (See figures \ref{3d-VS} and \ref{cratoncross} associated with negative $\xi$ perturbations. 
+% 			It is interesting to notice that at shallower depths than $100km$, the THO which welded the Superior and Rae/Hearne cratons, shows lighter (i.e, $+4\%$ compared to $+8\%$) positive anomalies than its archaean surrounding. 
+% 			This feature is associated with negative anomalies of $\xi$. 
+% 			While most of the proterozoic root start to thin out at $150km$, the THO at the vicinity of the hudson bay shows as high anomalies as Rae/Hearne and Superior areas associated with zero to positive anomalies in term of $\xi$. 
+% 			The THO comprises the archaean aged Sask craton (See Figure \ref{mapgeol}. 
+% 			The mantle beneath this exotic craton is interpreted to have been detached and replaced by both the Superior and the Hearne mantle lithosphere during final collision of the orogen \citep{nemeth2005lithospheric}. 
+% 			This interpretation, according to \cite{faure2011seismic} can be extrapolated farther to the east and may explain why Trans-Hudson orogen has no imprint in the upper mantle.
+
+% 		\paragraph{Rae-Hearne}
+% 			The Rae-Hearne craton shows typical lithospheric craton signatures with higher than average velocities (See figures \ref{3d-VS} and \ref{cratoncross}), and negative perturbations of $\xi$ (See Figure \ref{3d-Xi}). 
 			
-	\subsubsection{Yavapai/Mazatzal/Granit-Rhyolite region}
+% 			It shows in the entire region a positive velocity gradient with a maximum of ca. $4.7 \: km.s^{-1}$ associated with a maximum of $\xi$ at ca. $120 \: km$ deep. This gradient is at both top and bottom flat, steep until 170 km and smooth below.
 
-		Yavapai/Mazatzal/Granit-Rhyolite orogens from 1.8 to 1.6 Ga represent zones of accretion for Proterozoic material and mark the amalgamation of the archean cores. \citep{hoffman1988united} \\
-		West to the RMF, the region shows low velocities influenced by the active tectonic with a radially positive gradient. 
-		The north eastern part shows velocity anomalies slightly lower than the Archaean nucleus. Velocity maxima of $4.8km.s^{-1}$ are located shalower than $100km$. 
-		Below, the radially negative gradient is observed and shows the same characteristic than the eastern Superior craton. It is interesting to note that, beneath Nebraska and Kansas, a high velocity anomaly of about $4.7km.s^{-1}$ is present until ca. $170km$ (while it is $120km$ in most of the region) where cretaceous aged kimberlites are sampled. 
-		These kimberlites indicate a lithosphere thickness of about $160km$ and have been affected by asthenospheric upwelling related to the Mid-Continent Rift System. \citep{griffin2004lithosphere}
+% 			Between 150 km and $\sim$270 km a negative gradient is observed with a minimum of ca. $4.65 \: km.s^{-1}$ at ca. $250 - 270\: km$ deep.
+% 			The nortern part marks the shelf of the lithosphere nucleus by its thinning. 
+			
+% 	\subsubsection{Yavapai/Mazatzal/Granit-Rhyolite region}
+
+% 		Yavapai/Mazatzal/Granit-Rhyolite orogens from 1.8 to 1.6 Ga represent zones of accretion for Proterozoic material and mark the amalgamation of the archean cores. \citep{hoffman1988united} \\
+% 		West to the RMF, the region shows low velocities influenced by the active tectonic with a radially positive gradient. 
+% 		The north eastern part shows velocity anomalies slightly lower than the Archaean nucleus. Velocity maxima of $4.8km.s^{-1}$ are located shalower than $100km$. 
+% 		Below, the radially negative gradient is observed and shows the same characteristic than the eastern Superior craton. It is interesting to note that, beneath Nebraska and Kansas, a high velocity anomaly of about $4.7km.s^{-1}$ is present until ca. $170km$ (while it is $120km$ in most of the region) where cretaceous aged kimberlites are sampled. 
+% 		These kimberlites indicate a lithosphere thickness of about $160km$ and have been affected by asthenospheric upwelling related to the Mid-Continent Rift System. \citep{griffin2004lithosphere}
 
 
 
-% Basal drag from Kaban 2015 cannot be visible from temperature sensitive shear waves model, we dont see it but it is normal.
+% % Basal drag from Kaban 2015 cannot be visible from temperature sensitive shear waves model, we dont see it but it is normal.
 
 
 \subsubsection{Surrounding oceanic} 
@@ -351,6 +404,7 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION FOR FIGURES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Figure}
+\setkeys{Gin}{draft=false}
 
 	% Geological Map
 	\begin{figure}
@@ -462,35 +516,97 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 		\label{1daverage}
 	\end{figure}
 
+	% % Xsections of the craton
+	% \begin{figure}
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_A.pdf}}
+	% 	\end{minipage}
+	% 	\hfill
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_B.pdf}}
+	% 	\end{minipage}
+
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_gradient_A.pdf}}
+	% 	\end{minipage}
+	% 	\hfill
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_gradient_B.pdf}}
+	% 	\end{minipage}
+		
+
+	% 	\caption{\baselineskip 18pt
+	% 	Cross Section of the lithospheric core. 
+	% 	The left side shows cross section of $V_S$ (top) and $\xi$ perturbation from the Isotropic case ($\xi = 1$). The right side shows the radial gradient defined as $\frac{dV_S}{dz}$ in the top panel, and as $\frac{d\xi}{dz}$.}
+	% 	\label{cratoncross}
+
+	% \end{figure}
+
 	% Xsections of the craton
 	\begin{figure}
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_A.pdf}}
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_B.pdf}}
-		\end{minipage}
 
-		\caption{Cross Section of the lithospheric core}
-		\label{cratoncross}
+		\centerline{\includegraphics[width=\linewidth]{figures/Cross-section-with-geoltest.pdf}}
 
-	\end{figure}
-
-	\begin{figure}
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/profiles_WE-50.pdf}}
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/profiles_SN-100.pdf}}
-		\end{minipage}
-
-		\caption{Cross Section of the lithospheric core showing the core retraction}
+		\caption{\baselineskip 18pt
+		Cross Section of the lithospheric core at its edges. 
+		Cross Section of the lithospheric core with absolute velocities of $V_S$ in km.s$^{-1}$.}
 		\label{cratoncrossedge}
 
 	\end{figure}
 
+	\begin{figure}
+
+		\centerline{\includegraphics[width=\linewidth]{figures/Cross-gradient.pdf}}
+
+		\caption{\baselineskip 18pt
+		Cross Section of the lithospheric core. 
+		In each panel cross section of $V_S$ (top) and $\xi$ perturbation from the Isotropic case ($\xi = 1$) (bottom).
+		The right side shows cross section of $V_S$ (top) and $\xi$ perturbation from the Isotropic case ($\xi = 1$). The left side shows the radial gradient defined as $\frac{dV_S}{dz}$ in the top panel, and as $\frac{d\xi}{dz}$.}
+		\label{cratoncrosscenter}
+
+	\end{figure}
+
+
+	% \setkeys{Gin}{draft=false}
+		% Xsections of the craton
+	% \begin{figure}
+
+	% 	\fboxsep 0pt
+	% 	\begin{minipage}{0.48\linewidth}
+	% 		\begin{center}
+	% 		(a) \\ \includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxiSN-western-boarder.pdf}
+	% 		\end{center}
+	% 	\end{minipage}
+	% 	\hfill
+	% 	\begin{minipage}{0.48\linewidth}
+	% 		\begin{center}
+	% 		(b) \\ \includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxiSN-esatern-boarder.pdf}
+	% 		\end{center}	
+	% 	\end{minipage}
+
+	% 	\vspace{3mm}
+
+	% 	\begin{minipage}{0.48\linewidth}
+	% 		\begin{center}
+	% 		(c) \\ \includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxiWE-northern-boarder.pdf}
+	% 		\end{center}
+	% 	\end{minipage}
+	% 	\hfill
+	% 	\begin{minipage}{0.48\linewidth}
+	% 		\begin{center}
+	% 		(d) \\ \includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxiWE-southern-boarder.pdf}
+	% 		\end{center}
+	% 	\end{minipage}
+				
+
+	% 	\caption{\baselineskip 18pt
+	% 	Cross Section of the lithospheric core at its edges. 
+	% 	In each panel cross section of $V_S$ (top) and $\xi$ perturbation from the Isotropic case ($\xi = 1$) (bottom).}
+	% 	\label{cratoncrossedge}
+
+	% \end{figure}
+
+% \setkeys{Gin}{draft=false}
 	% Xsection of the GMT track
 	\begin{figure}
 		\centerline{\includegraphics[width=\linewidth]{figures/profiles_NASEM3_vs_dxi_GMTrack.pdf}}
@@ -501,26 +617,27 @@ Neither PAVA nor NACT consider off-great circle plane sensitivity (i.e. focusing
 	\end{figure}
 
 	% dIso for Xi
-	\begin{figure}
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_60km.png}}
-		\end{minipage}
-		\hfill
-		\begin{minipage}{0.5\linewidth}
-			\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_100km.png}}
-		\end{minipage}
-		% \begin{minipage}{0.5\linewidth}
-		% 	\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_150km.png}}
-		% \end{minipage}
+	% \begin{figure}
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_60km.png}}
+	% 	\end{minipage}
+	% 	\hfill
+	% 	\begin{minipage}{0.5\linewidth}
+	% 		\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_100km.png}}
+	% 	\end{minipage}
+	% 	% \begin{minipage}{0.5\linewidth}
+	% 	% 	\centerline{\includegraphics[width=\linewidth]{figures/Xi_NASEM-iter3-Xi-iso_150km.png}}
+	% 	% \end{minipage}
 
-		\caption{\baselineskip 18pt 
-		3D radial anisotropic structure of the continent at 60 and 100 \: km compared to the Isotropic case. 
-		Map view shows variations with respect to the Isotropic case as $\frac{\xi - 1}{1}$ in \%. 
-		Map view is saturated to better show where $V_{SV}$ is stronger than $V_{SH}$.
-		Below each map, depth and its regional shear velocity mean is indicated. Minimum and maximum perturbations are also indicated.}
-		\label{3d-xi-iso-100km}
+	% 	\caption{\baselineskip 18pt 
+	% 	3D radial anisotropic structure of the continent at 60 and 100 \: km compared to the Isotropic case. 
+	% 	Map view shows variations with respect to the Isotropic case as $\frac{\xi - 1}{1}$ in \%. 
+	% 	Map view is saturated to better show where $V_{SV}$ is stronger than $V_{SH}$.
+	% 	Below each map, depth and its regional shear velocity mean is indicated. Minimum and maximum perturbations are also indicated.}
+	% 	\label{3d-xi-iso-100km}
 
-	\end{figure}
+	% \end{figure}
+	
 \bibliographystyle{apalike}
 \bibliography{/Users/Pierre/Documents/PHD/Thesis/biblio.bib}
 %
